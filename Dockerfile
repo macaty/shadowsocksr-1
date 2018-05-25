@@ -35,7 +35,10 @@ RUN apk --no-cache add python \
 	M2Crypto
 
 RUN mkdir -p $WORK && \
-    cd $WORK && git clone -b manyuser https://github.com/shadowsocksrr/shadowsocksr.git \
+    cd ~ \
+    pwd \
+    git clone -b manyuser https://github.com/shadowsocksrr/shadowsocksr.git \
+    pwd \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR $WORK/shadowsocksr
