@@ -2,15 +2,15 @@ FROM alpine:3.6
 MAINTAINER Xuhui <1498472791@qq.com> ref:breakwa11/shadowsocksr
 
 ENV SERVER_ADDR     0.0.0.0
-ENV SERVER_PORT     51348
-ENV PASSWORD        psw
+ENV SERVER_PORT     80
+ENV PASSWORD        cisco
 ENV METHOD          chacha20
-ENV PROTOCOL        auth_aes128_md5
+ENV PROTOCOL        auth_sha1_compatible
 ENV PROTOCOLPARAM   32
-ENV OBFS            tls1.2_ticket_auth_compatible
+ENV OBFS            http_simple_compatible
 ENV TIMEOUT         300
-ENV DNS_ADDR        8.8.8.8
-ENV DNS_ADDR_2      8.8.4.4
+ENV DNS_ADDR        114.114.114.114
+ENV DNS_ADDR_2      223.5.5.5
 
 ARG BRANCH=manyuser
 ARG WORK=~
@@ -18,7 +18,7 @@ ARG WORK=~
 
 RUN apk --no-cache add python \
     build-base \
-	git \
+    git \
     gcc \
     openssl-dev \
     musl-dev \
@@ -36,7 +36,7 @@ RUN apk --no-cache add python \
 
 RUN mkdir -p $WORK && \
     cd ~ \
-	git clone -b manyuser https://github.com/shadowsocksrr/shadowsocksr.git \
+    git clone -b manyuser https://github.com/shadowsocksrr/shadowsocksr.git \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR $WORK/shadowsocks
