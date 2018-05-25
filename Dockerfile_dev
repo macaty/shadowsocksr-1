@@ -46,7 +46,7 @@ RUN mkdir -p $WORK
 
 RUN cd ${WORK} && wget --no-check-certificate -O ${libsodium_file}.tar.gz ${libsodium_url} && tar zxf ${libsodium_file}.tar.gz && cd ${libsodium_file} && ./configure --prefix=/usr && make && make install
 
-RUN cd ${WORK} && wget --no-check-certificate -O ${shadowsocks_r_file}.tar.gz ${shadowsocks_r_url} && zxf ${shadowsocks_r_file}.tar.gz
+RUN cd ${WORK} && wget --no-check-certificate -O ${shadowsocks_r_file}.tar.gz ${shadowsocks_r_url} && tar zxf ${shadowsocks_r_file}.tar.gz
 	
 WORKDIR $WORK/$shadowsocks_r_file
 
