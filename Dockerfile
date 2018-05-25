@@ -39,7 +39,7 @@ RUN mkdir -p $WORK && \
     git clone -b manyuser https://github.com/shadowsocksrr/shadowsocksr.git \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-WORKDIR $WORK/shadowsocks
+WORKDIR $WORK/shadowsocksr
 
 RUN apk del \
         wget \
