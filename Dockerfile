@@ -26,6 +26,8 @@ RUN mkdir -p $WORK && \
 
 WORKDIR $WORK/shadowsocksr-3.2.2
 
+COPY shadowsocks.json /etc/shadowsocks.json
 
 EXPOSE $SERVER_PORT
-CMD python server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS
+CMD python server.py -c /etc/shadowsocks.json
+#CMD python server.py -p $SERVER_PORT -k $PASSWORD -m $METHOD -O $PROTOCOL -o $OBFS
