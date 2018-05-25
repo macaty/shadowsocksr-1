@@ -18,6 +18,7 @@ ARG WORK=~
 
 RUN apk --no-cache add python \
     build-base \
+	git \
     gcc \
     openssl-dev \
     musl-dev \
@@ -34,10 +35,11 @@ RUN apk --no-cache add python \
 	M2Crypto
 
 RUN mkdir -p $WORK && \
-    wget -qO- --no-check-certificate https://github.com/macaty/shadowsocksr-1/archive/3.4.0.tar.gz | tar -xzf - -C $WORK && \
+    cd ~ \
+	git clone -b manyuser https://github.com/shadowsocksrr/shadowsocksr.git \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-WORKDIR $WORK/shadowsocksr-$BRANCH/shadowsocks
+WORKDIR $WORK/shadowsocks
 
 RUN apk del \
         wget \
