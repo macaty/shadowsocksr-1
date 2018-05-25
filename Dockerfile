@@ -34,7 +34,7 @@ RUN apk --no-cache add python \
 	M2Crypto
 
 RUN mkdir -p $WORK && \
-    wget -qO- --no-check-certificate https://github.com/shadowsocksr-backup/shadowsocksr/archive/$BRANCH.tar.gz | tar -xzf - -C $WORK && \
+    wget -qO- --no-check-certificate https://github.com/macaty/shadowsocksr-1/archive/3.4.0.tar.gz | tar -xzf - -C $WORK && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 WORKDIR $WORK/shadowsocksr-$BRANCH/shadowsocks
